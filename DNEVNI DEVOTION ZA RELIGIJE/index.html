@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Devotion App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Select a Religion for Daily Devotion</h1>
+        <div id="religions">
+            <button id="Christianity">Christianity</button>
+            <script>
+                document.getElementById('Christianity').addEventListener('click', function() {
+                    // URL to open in the new tab
+                  
+                    // Open the URL in a new tab
+                    window.open(url, '_blank');
+                });
+            </script>
+
+            <button id="Islam">Islam</button>
+            <script>
+                document.getElementById('Islam').addEventListener('click', function() {
+                    // URL to open in the new tab
+                   
+                    // Open the URL in a new tab
+                    window.open(url, '_blank');
+                });
+            </script>
+
+            <button id="Hinduism">Hinduism</button>
+            <script>
+                document.getElementById('Hinduism').addEventListener('click', function() {
+                    // URL to open in the new tab
+                   
+                    // Open the URL in a new tab
+                    window.open(url, '_blank');
+                });
+            </script>
+
+            <button id="Buddhism">Buddhism</button>
+            <script>
+                document.getElementById('Buddhism').addEventListener('click', function() {
+                    // URL to open in the new tab
+                  
+                    // Open the URL in a new tab
+                    window.open(url, '_blank');
+                });
+            </script>
+
+            <button id="Judaism">Judaism</button>
+            <script>
+                document.getElementById('Judaism').addEventListener('click', function() {
+                    // URL to open in the new tab
+                    
+                    // Open the URL in a new tab
+                    window.open(url, '_blank');
+                });
+            </script>
+
+        </div>
+    </div>
+    <div id="devotion-container" class="container hidden">
+        <h1 id="devotion-title"></h1>
+        <p id="devotion-content"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<script>
+    // Array of paragraphs for Judaism
+    const judaismParagraphs = [
+    "The highest form of wisdom is kindness. - Talmud",
+"Where there is love, there is life. - Rabbi Menachem Mendel Schneerson",
+"Do not be daunted by the enormity of the world's grief. Do justly, now. Love mercy, now. Walk humbly, now. - Rabbi Rami Shapiro",
+"The more Torah, the more life. - Pirkei Avot",
+"It is not your duty to complete the work, but neither are you free to desist from it. - Pirkei Avot",
+"Pray for the peace of Jerusalem. - Psalms 122:6",
+"As water reflects the face, so one's life reflects the heart. - Proverbs 27:19",
+"Who is wise? One who learns from every person. - Pirkei Avot",
+"The world is sustained by three things: Torah, worship, and acts of loving kindness. - Pirkei Avot",
+"Kindness is the highest form of wisdom. - Talmud",
+"The righteous person falls seven times and rises. - Proverbs 24:16",
+"As you teach, you learn. - Talmud",
+"An open hand is blessed, it is the closed fist that must be broken. - Midrash",
+"Know from where you came and where you are going. - Pirkei Avot",
+"Guard your tongue from evil and your lips from deceitful speech. - Psalms 34:14",
+"The reward of a good deed is the deed itself. - Pirkei Avot",
+"The world stands on three things: Torah, service, and acts of loving kindness. - Pirkei Avot",
+"He who saves one life, saves the world entire. - Talmud",
+"Seek peace and pursue it. - Psalms 34:15",
+"Do not separate yourself from the community. - Pirkei Avot",
+"The just person's mouth utters wisdom, and his tongue speaks justice. - Psalms 37:30",
+"The reward of a mitzvah (good deed) is the mitzvah itself. - Pirkei Avot",
+"In a place where there are no men, strive to be a man. - Pirkei Avot",
+"Who is rich? One who is happy with his portion. - Pirkei Avot",
+"The highest form of worship is the worship of unselfish Christian service. - Abraham Joshua Heschel",
+"Who is wise? One who learns from every person. - Pirkei Avot",
+"A little light dispels a lot of darkness. - Rabbi Schneur Zalman of Liadi",
+"You shall love your neighbor as yourself. - Leviticus 19:18",
+"Love your neighbor as yourself: I am the Lord. - Leviticus 19:18",
+"Say little and do much. - Pirkei Avot",
+"He who guards his mouth and his tongue, guards his soul from troubles. - Proverbs 21:23",
+"Pray as if everything depends on God; act as if everything depends on you. - Rabbi Tarfon",
+"There are seventy faces to the Torah. - Numbers Rabbah",
+"The reward of humility and the fear of the Lord is riches, honor, and life. - Proverbs 22:4",
+"Where there is no vision, the people perish. - Proverbs 29:18",
+"The joy of the Lord is your strength. - Nehemiah 8:10",
+"Heal us, O Lord, and we shall be healed; save us, and we shall be saved. - Jeremiah 17:14",
+"Peace, peace, to the far and near, says the Lord, and I will heal them. - Isaiah 57:19",
+"With God, all things are possible. - Matthew 19:26",
+"May God bless you and guard you. - Numbers 6:24",
+"A person's steps are made firm by the Lord when God delights in their way. - Psalms 37:23",
+"Who is honored? One who honors others. - Pirkei Avot",
+"Happy is the one who finds wisdom, and the one who gains understanding. - Proverbs 3:13",
+"Trust in the Lord with all your heart, and lean not on your own understanding. - Proverbs 3:5",
+"Do not withhold good from those to whom it is due, when it is in your power to act. - Proverbs 3:27",
+"Listen to advice and accept instruction, that you may gain wisdom in the future. - Proverbs 19:20",
+"The wise in heart will be called understanding, and sweetness of speech increases persuasiveness. - Proverbs 16:21",
+"A gentle answer turns away wrath, but a harsh word stirs up anger. - Proverbs 15:1",
+"The Lord is my shepherd; I shall not want. - Psalms 23:1",
+"May the words of my mouth and the meditation of my heart be pleasing to you, O Lord, my rock and my redeemer. - Psalms 19:14",
+    ];
+
+ // Function to get a random Judaism quote
+ function getRandomJudaismQuote() {
+        return judaismParagraphs[Math.floor(Math.random() * judaismParagraphs.length)];
+    }
+
+    // Function to handle click on the "Judaism" button
+    document.getElementById('Judaism').addEventListener('click', function () {
+        // Check if there is a stored selection
+        const lastSelectionTimestamp = localStorage.getItem('lastSelectionTimestampJudaism');
+        let selectedQuote;
+        if (lastSelectionTimestamp && !has24HoursPassed(parseInt(lastSelectionTimestamp))) {
+            // If 24 hours have not passed, use the previously selected quote
+            selectedQuote = localStorage.getItem('selectedQuoteJudaism');
+        } else {
+            // If 24 hours have passed or no selection exists, get a new random quote
+            selectedQuote = getRandomJudaismQuote();
+            // Store the new selection and current timestamp
+            localStorage.setItem('selectedQuoteJudaism', selectedQuote);
+            localStorage.setItem('lastSelectionTimestampJudaism', new Date().getTime());
+        }
+
+        // Open the URL in a new tab
+        const url = 'https://www.example.com';
+        const backgroundImageUrl = 'https://cdn.vanderbilt.edu/vu-URL/wp-content/uploads/sites/238/2022/04/19205353/s22-deep-dive-torah-scaled.jpeg';
+        const newTab = window.open(url, '_blank');
+
+        // Write content to the new tab
+        if (newTab) {
+            newTab.document.write('<style> \
+                                    body { \
+                                        font-family: Arial, sans-serif; \
+                                        background-image: url(' + backgroundImageUrl + '); \
+                                        background-size: cover; \
+                                        background-position: center; \
+                                        padding: 20px; \
+                                        display: flex; \
+                                        align-items: center; \
+                                        justify-content: center; \
+                                        height: 100vh; \
+                                    } \
+                                    .content { \
+                                        text-align: left; \
+                                        width: 80%; \
+                                        max-width: 600px; \
+                                        padding: 20px; \
+                                        background-color: rgba(255, 255, 255, 0.8); \
+                                        border-radius: 8px; \
+                                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); \
+                                    } \
+                                    h1 { \
+                                        color: #2d7ea3; \
+                                        text-align: center; \
+                                    } \
+                                    p { \
+                                        color: #333; \
+                                        line-height: 1.6; \
+                                        text-align: center; \
+                                    } \
+                                  </style>');
+            newTab.document.write('<div class="content">');
+            newTab.document.write('<h1>Daily devotion for Judaism</h1>');
+            newTab.document.write('<p>' + selectedQuote + '</p>');
+            newTab.document.write('</div>');
+        } else {
+            alert('Popup blocker is preventing opening the new tab. Please allow popups for this site.');
+        }
+    });
+</script>
+
+<script>
+    // Array of paragraphs for Buddhism
+    const buddhismParagraphs = [
+    "You yourself, as much as anybody in the entire universe, deserve your love and affection. - Buddha (Buddhist teacher)",
+"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment. - Buddha (Buddhist teacher)",
+"The mind is everything. What you think you become. - Buddha (Buddhist teacher)",
+"Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship. - Buddha (Buddhist teacher)",
+"There are only two mistakes one can make along the road to truth; not going all the way, and not starting. - Buddha (Buddhist teacher)",
+"In the end, only three things matter: how much you loved, how gently you lived, and how gracefully you let go of things not meant for you. - Buddha (Buddhist teacher)",
+"The trouble is, you think you have time. - Buddha (Buddhist teacher)",
+"To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear. - Buddha (Buddhist teacher)",
+"Just as a candle cannot burn without fire, men cannot live without a spiritual life. - Buddha (Buddhist teacher)",
+"No one saves us but ourselves. No one can and no one may. We ourselves must walk the path. - Buddha (Buddhist teacher)",
+"You will not be punished for your anger; you will be punished by your anger. - Buddha (Buddhist teacher)",
+"The only real failure in life is not to be true to the best one knows. - Buddha (Buddhist teacher)",
+"In the sky, there is no distinction of east and west; people create distinctions out of their own minds and then believe them to be true. - Buddha (Buddhist teacher)",
+"You cannot travel the path until you have become the path itself. - Buddha (Buddhist teacher)",
+"The mind is everything. What you think you become. - Buddha (Buddhist teacher)",
+"Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared. - Buddha (Buddhist teacher)",
+"We are shaped by our thoughts; we become what we think. When the mind is pure, joy follows like a shadow that never leaves. - Buddha (Buddhist teacher)",
+"The secret of health for both mind and body is not to mourn for the past, not to worry about the future, not to anticipate the future, but to live the present moment wisely and earnestly. - Buddha (Buddhist teacher)",
+"All that we are is the result of what we have thought. The mind is everything. What we think, we become. - Buddha (Buddhist teacher)",
+"Believe nothing, no matter where you read it, or who said it, no matter if I have said it, unless it agrees with your own reason and your own common sense. - Buddha (Buddhist teacher)",
+"You will not be punished for your anger; you will be punished by your anger. - Buddha (Buddhist teacher)",
+"Three things cannot be long hidden: the sun, the moon, and the truth. - Buddha (Buddhist teacher)",
+"The mind is everything. What you think you become. - Buddha (Buddhist teacher)",
+"Every morning we are born again. What we do today is what matters most. - Buddha (Buddhist teacher)",
+"Nothing can harm you as much as your own thoughts unguarded. - Buddha (Buddhist teacher)",
+"The mind is everything. What you think you become. - Buddha (Buddhist teacher)",
+"What we think, we become. - Buddha (Buddhist teacher)",
+"The only real failure in life is not to be true to the best one knows. - Buddha (Buddhist teacher)",
+"To enjoy good health, to bring true happiness to one's family, to bring peace to all, one must first discipline and control one's own mind. - Buddha (Buddhist teacher)",
+"The mind is everything. What you think you become. - Buddha (Buddhist teacher)",
+"It is better to conquer yourself than to win a thousand battles. Then the victory is yours. It cannot be taken from you, not by angels or by demons, heaven or hell. - Buddha (Buddhist teacher)",
+"The mind is everything. What you think you become. - Buddha (Buddhist teacher)",
+"Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared. - Buddha (Buddhist teacher)",
+"The mind is everything. What you think you become. - Buddha (Buddhist teacher)",
+"The secret of health for both mind and body is not to mourn for the past, worry about the future, or anticipate troubles, but to live in the present moment wisely and earnestly. - Buddha (Buddhist teacher)",
+"Peace comes from within. Do not seek it without. - Buddha (Buddhist teacher)",
+"To understand everything is to forgive everything. - Buddha (Buddhist teacher)",
+"You cannot travel the path until you have become the path itself. - Buddha (Buddhist teacher)",
+"There is no path to happiness: happiness is the path. - Buddha (Buddhist teacher)",
+"There is nothing more dreadful than the habit of doubt. Doubt separates people. It is a poison that disintegrates friendships and breaks up pleasant relations. It is a thorn that irritates and hurts; it is a sword that kills. - Buddha (Buddhist teacher)",
+"We are what we think. All that we are arises with our thoughts. With our thoughts, we make the world. - Buddha (Buddhist teacher)",
+"The mind is everything. What you think you become. - Buddha (Buddhist teacher)",
+"The only real failure in life is not to be true to the best one knows. - Buddha (Buddhist teacher)",
+"All that we are is the result of what we have thought. The mind is everything. What we think, we become. - Buddha (Buddhist teacher)",
+"To conquer oneself is a greater task than conquering others. - Buddha (Buddhist teacher)",
+"The mind is everything. What you think you become. - Buddha (Buddhist teacher)",
+"All that we are is the result of what we have thought. The mind is everything. What we think, we become. - Buddha (Buddhist teacher)",
+"You only lose what you cling to. - Buddha (Buddhist teacher)",
+"All that we are is the result of what we have thought. The mind is everything. What we think, we become. - Buddha (Buddhist teacher)",
+"The mind is everything. What you think you become. - Buddha (Buddhist teacher)",
+    ];
+
+  // Function to get a random Buddhism quote
+  function getRandomBuddhismQuote() {
+        return buddhismParagraphs[Math.floor(Math.random() * buddhismParagraphs.length)];
+    }
+
+    // Function to handle click on the "Buddhism" button
+    document.getElementById('Buddhism').addEventListener('click', function () {
+        // Check if there is a stored selection
+        const lastSelectionTimestamp = localStorage.getItem('lastSelectionTimestampBuddhism');
+        let selectedQuote;
+        if (lastSelectionTimestamp && !has24HoursPassed(parseInt(lastSelectionTimestamp))) {
+            // If 24 hours have not passed, use the previously selected quote
+            selectedQuote = localStorage.getItem('selectedQuoteBuddhism');
+        } else {
+            // If 24 hours have passed or no selection exists, get a new random quote
+            selectedQuote = getRandomBuddhismQuote();
+            // Store the new selection and current timestamp
+            localStorage.setItem('selectedQuoteBuddhism', selectedQuote);
+            localStorage.setItem('lastSelectionTimestampBuddhism', new Date().getTime());
+        }
+
+        // Open the URL in a new tab
+        const url = 'https://www.example.com';
+        const backgroundImageUrl = 'https://static.vecteezy.com/system/resources/previews/027/110/165/large_2x/buddha-in-a-green-mystical-background-free-photo.jpeg';
+        const newTab = window.open(url, '_blank');
+
+        // Write content to the new tab
+        if (newTab) {
+            newTab.document.write('<style> \
+                                    body { \
+                                        font-family: Arial, sans-serif; \
+                                        background-image: url(' + backgroundImageUrl + '); \
+                                        background-size: cover; \
+                                        background-position: center; \
+                                        padding: 20px; \
+                                        display: flex; \
+                                        align-items: center; \
+                                        justify-content: center; \
+                                        height: 100vh; \
+                                    } \
+                                    .content { \
+                                        text-align: left; \
+                                        width: 80%; \
+                                        max-width: 600px; \
+                                        padding: 20px; \
+                                        background-color: rgba(255, 255, 255, 0.8); \
+                                        border-radius: 8px; \
+                                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); \
+                                    } \
+                                    h1 { \
+                                        color: #2d7ea3; \
+                                        text-align: center; \
+                                    } \
+                                    p { \
+                                        color: #333; \
+                                        line-height: 1.6; \
+                                        text-align: center; \
+                                    } \
+                                  </style>');
+            newTab.document.write('<div class="content">');
+            newTab.document.write('<h1>Daily devotion for Buddhism</h1>');
+            newTab.document.write('<p>' + selectedQuote + '</p>');
+            newTab.document.write('</div>');
+        } else {
+            alert('Popup blocker is preventing opening the new tab. Please allow popups for this site.');
+        }
+    });
+</script>
+
+
+
+<script>
+    // Array of paragraphs for Hinduism
+    const hinduismParagraphs = [
+    "The mind acts like an enemy for those who do not control it. - Bhagavad Gita (Hindu scripture)",
+"Perform your obligatory duty, because action is indeed better than inaction. - Bhagavad Gita (Hindu scripture)",
+"Those who restrain their senses and are free from attachment and aversion, and who are wise, are established in perfect knowledge. - Bhagavad Gita (Hindu scripture)",
+"Happiness is a state of mind, not a state of possession. - Lord Krishna (Hindu deity)",
+"The soul is neither born, nor does it die. - Bhagavad Gita (Hindu scripture)",
+"The mind is restless and difficult to restrain, but it is subdued by practice. - Bhagavad Gita (Hindu scripture)",
+"Yoga is the journey of the self, through the self, to the self. - Bhagavad Gita (Hindu scripture)",
+"The wise sees knowledge and action as one; they see truly. - Bhagavad Gita (Hindu scripture)",
+"One who sees inaction in action, and action in inaction, is intelligent among men. - Bhagavad Gita (Hindu scripture)",
+"Set thy heart upon thy work, but never on its reward. - Bhagavad Gita (Hindu scripture)",
+"There is neither this world, nor the world beyond, nor happiness for the one who doubts. - Bhagavad Gita (Hindu scripture)",
+"There is nothing lost or wasted in this life. - Bhagavad Gita (Hindu scripture)",
+"The soul is unbreakable and insoluble; it cannot be burned or dried. - Bhagavad Gita (Hindu scripture)",
+"Those who cannot renounce attachment to the results of their work are far from the path. - Bhagavad Gita (Hindu scripture)",
+"He who has no attachments can really love others, for his love is pure and divine. - Swami Vivekananda (Hindu philosopher)",
+"All the scriptures lead to one truth - the oneness of existence. - Swami Vivekananda (Hindu philosopher)",
+"All power is within you; you can do anything and everything. - Swami Vivekananda (Hindu philosopher)",
+"Truth can be stated in a thousand different ways, yet each one can be true. - Swami Vivekananda (Hindu philosopher)",
+"Arise, awake, and stop not until the goal is achieved. - Swami Vivekananda (Hindu philosopher)",
+"The greatest religion is to be true to your own nature. Have faith in yourselves. - Swami Vivekananda (Hindu philosopher)",
+"In a conflict between the heart and the brain, follow your heart. - Swami Vivekananda (Hindu philosopher)",
+"The power of concentration is the only key to the treasure-house of knowledge. - Swami Vivekananda (Hindu philosopher)",
+"Everything that is excellent will come when this sleeping soul is aroused to self-conscious activity. - Swami Vivekananda (Hindu philosopher)",
+"The whole life is a succession of dreams. My ambition is to be a conscious dreamer, that is all. - Swami Vivekananda (Hindu philosopher)",
+"Take up one idea. Make that one idea your life - think of it, dream of it, live on that idea. - Swami Vivekananda (Hindu philosopher)",
+"The more we come out and do good to others, the more our hearts will be purified. - Swami Vivekananda (Hindu philosopher)",
+"The greatest sin is to think that you are weak. - Swami Vivekananda (Hindu philosopher)",
+"The greatest religion is to be true to your own nature. Have faith in yourselves. - Swami Vivekananda (Hindu philosopher)",
+"All love is expansion, all selfishness is contraction. Love is therefore the only law of life. - Swami Vivekananda (Hindu philosopher)",
+"Strength is life, weakness is death. - Swami Vivekananda (Hindu philosopher)",
+"You cannot believe in God until you believe in yourself. - Swami Vivekananda (Hindu philosopher)",
+"The greatest help to spiritual life is meditation. In meditation, we divest ourselves of all material conditions. - Swami Vivekananda (Hindu philosopher)",
+"The more we come out and do good to others, the more our hearts will be purified. - Swami Vivekananda (Hindu philosopher)",
+"Whatever you think, that you will be. If you think yourselves weak, weak you will be; if you think yourselves strong, strong you will be. - Swami Vivekananda (Hindu philosopher)",
+"The only way to rise is by raising others. - Swami Vivekananda (Hindu philosopher)",
+"Fill the brain with high thoughts, highest ideals, place them day and night before you, and out of that will come great work. - Swami Vivekananda (Hindu philosopher)",
+"We reap what we sow. We are the makers of our own fate. None else has the blame, none has the praise. - Swami Vivekananda (Hindu philosopher)",
+"Comfort is no test of truth. Truth is often far from being comfortable. - Swami Vivekananda (Hindu philosopher)",
+"Condemn none: if you can stretch out a helping hand, do so. If you cannot, fold your hands, bless your brothers, and let them go their own way. - Swami Vivekananda (Hindu philosopher)",
+"All differences in this world are of degree, and not of kind, because oneness is the secret of everything. - Swami Vivekananda (Hindu philosopher)",
+"All power is within you; you can do anything and everything. Believe in that, do not believe that you are weak. - Swami Vivekananda (Hindu philosopher)",
+"You have to grow from the inside out. None can teach you, none can make you spiritual. There is no other teacher but your own soul. - Swami Vivekananda (Hindu philosopher)",
+"Do not wait for anybody or anything. Do whatever you can, build your hope on none. - Swami Vivekananda (Hindu philosopher)",
+"The world is ready to give up its secrets if we only know how to knock, how to give it the necessary blow. - Swami Vivekananda (Hindu philosopher)",
+"The very reason for nature's existence is for the education of the soul. - Swami Vivekananda (Hindu philosopher)",
+"The whole of nature is for the soul, not the soul for nature. - Swami Vivekananda (Hindu philosopher)",
+"Knowledge can only be got in one way, the way of experience; there is no other way to know. - Swami Vivekananda (Hindu philosopher)",
+"Each soul is potentially divine. - Swami Vivekananda (Hindu philosopher)",
+"In a day, when you don't come across any problems - you can be sure that you are traveling in a wrong path. - Swami Vivekananda (Hindu philosopher)",
+"All power is within you; you can do anything and everything. - Swami Vivekananda (Hindu philosopher)",
+    ];
+
+ // Function to get a random Hinduism quote
+ function getRandomHinduismQuote() {
+        return hinduismParagraphs[Math.floor(Math.random() * hinduismParagraphs.length)];
+    }
+
+    // Function to handle click on the "Hinduism" button
+    document.getElementById('Hinduism').addEventListener('click', function () {
+        // Check if there is a stored selection
+        const lastSelectionTimestamp = localStorage.getItem('lastSelectionTimestampHinduism');
+        let selectedQuote;
+        if (lastSelectionTimestamp && !has24HoursPassed(parseInt(lastSelectionTimestamp))) {
+            // If 24 hours have not passed, use the previously selected quote
+            selectedQuote = localStorage.getItem('selectedQuoteHinduism');
+        } else {
+            // If 24 hours have passed or no selection exists, get a new random quote
+            selectedQuote = getRandomHinduismQuote();
+            // Store the new selection and current timestamp
+            localStorage.setItem('selectedQuoteHinduism', selectedQuote);
+            localStorage.setItem('lastSelectionTimestampHinduism', new Date().getTime());
+        }
+
+        // Open the URL in a new tab
+        const url = 'https://www.example.com';
+        const backgroundImageUrl = 'https://images2.alphacoders.com/117/1173557.jpg';
+        const newTab = window.open(url, '_blank');
+
+        // Write content to the new tab
+        if (newTab) {
+            newTab.document.write('<style> \
+                                    body { \
+                                        font-family: Arial, sans-serif; \
+                                        background-image: url(' + backgroundImageUrl + '); \
+                                        background-size: cover; \
+                                        background-position: center; \
+                                        padding: 20px; \
+                                        display: flex; \
+                                        align-items: center; \
+                                        justify-content: center; \
+                                        height: 100vh; \
+                                    } \
+                                    .content { \
+                                        text-align: left; \
+                                        width: 80%; \
+                                        max-width: 600px; \
+                                        padding: 20px; \
+                                        background-color: rgba(255, 255, 255, 0.8); \
+                                        border-radius: 8px; \
+                                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); \
+                                    } \
+                                    h1 { \
+                                        color: #2d7ea3; \
+                                        text-align: center; \
+                                    } \
+                                    p { \
+                                        color: #333; \
+                                        line-height: 1.6; \
+                                        text-align: center; \
+                                    } \
+                                  </style>');
+            newTab.document.write('<div class="content">');
+            newTab.document.write('<h1>Daily devotion for Hinduism</h1>');
+            newTab.document.write('<p>' + selectedQuote + '</p>');
+            newTab.document.write('</div>');
+        } else {
+            alert('Popup blocker is preventing opening the new tab. Please allow popups for this site.');
+        }
+    });
+</script>
+
+<script>
+    // Array of paragraphs for Islam
+    const islamParagraphs = [
+    "And We have certainly created man, and We know what his soul whispers to him, and We are closer to him than [his] jugular vein. - Quran 50:16",
+"Say, He is Allah, [who is] One, Allah, the Eternal Refuge. He neither begets nor is born, nor is there to Him any equivalent. - Quran 112:1-4",
+"Verily, with every difficulty, there is relief. - Quran 94:6",
+"The best among you are those who have the best manners and character. - Prophet Muhammad (Hadith)",
+"Allah does not burden a soul beyond that it can bear... - Quran 2:286",
+"Whoever believes in Allah and the Last Day, let him speak good or remain silent. - Prophet Muhammad (Hadith)",
+"To Allah belongs the east and the west. Wherever you turn, there is the Face of Allah. Indeed, Allah is all-Encompassing and Knowing. - Quran 2:115",
+"Kindness is a mark of faith, and whoever has not kindness has not faith. - Prophet Muhammad (Hadith)",
+"Call upon Me; I will respond to you. - Quran 40:60",
+"The strong person is not the one who can wrestle someone else down. The strong person is the one who can control himself when he is angry. - Prophet Muhammad (Hadith)",
+"Do not despair of the mercy of Allah. Indeed, Allah forgives all sins. - Quran 39:53",
+"A believer does not taunt others, he does not curse others, he does not use profanity, and he does not abuse others. - Prophet Muhammad (Hadith)",
+"Whoever kills an innocent person, it is as if he has killed all of humanity. - Quran 5:32",
+"The best of you are those who are best to their wives. - Prophet Muhammad (Hadith)",
+"Indeed, with hardship comes ease. - Quran 94:5",
+"The one who guides to something good has a reward similar to that of its doer. - Prophet Muhammad (Hadith)",
+"Allah is with those who are patient. - Quran 2:153",
+"Speak good or remain silent. - Prophet Muhammad (Hadith)",
+"Allah does not look at your forms and possessions, but He looks at your hearts and your deeds. - Prophet Muhammad (Hadith)",
+"Allah is the best of planners. - Quran 8:30",
+"Be kind, for whenever kindness becomes part of something, it beautifies it. Whenever it is taken from something, it leaves it tarnished. - Prophet Muhammad (Hadith)",
+"There is no compulsion in religion. - Quran 2:256",
+"The best among you are those who learn the Quran and teach it. - Prophet Muhammad (Hadith)",
+"And Allah is the best of planners. - Quran 3:54",
+"The most beloved deeds to Allah are those done consistently, even if they are small. - Prophet Muhammad (Hadith)",
+"Seek knowledge from the cradle to the grave. - Prophet Muhammad (Hadith)",
+"Invite people to Islam even without words. - Prophet Muhammad (Hadith)",
+"Whoever shows mercy, even to a lizard, Allah will be merciful to him on the Day of Judgment. - Prophet Muhammad (Hadith)",
+"Whoever believes in Allah and the Last Day should say what is good or keep silent. - Prophet Muhammad (Hadith)",
+"The world is a prison for a believer and Paradise for a disbeliever. - Prophet Muhammad (Hadith)",
+"Allah is kind and loves kindness in all matters. - Prophet Muhammad (Hadith)",
+"When Allah loves a servant, He tests him. - Prophet Muhammad (Hadith)",
+"A person who seeks a path to acquire knowledge, Allah will make easy the path to Paradise for him. - Prophet Muhammad (Hadith)",
+"The reward of deeds depends upon the intentions. - Prophet Muhammad (Hadith)",
+"Whoever treads a path in search of knowledge, Allah will make easy for him the path to Paradise. - Prophet Muhammad (Hadith)",
+"Speak good or remain silent. - Prophet Muhammad (Hadith)",
+"The best among you are those who have the best manners and character. - Prophet Muhammad (Hadith)",
+"The strong person is not the one who can wrestle someone else down. The strong person is the one who can control himself when he is angry. - Prophet Muhammad (Hadith)",
+"Allah does not look at your forms and possessions, but He looks at your hearts and your deeds. - Prophet Muhammad (Hadith)",
+"There is no compulsion in religion. - Quran 2:256",
+"The best among you are those who learn the Quran and teach it. - Prophet Muhammad (Hadith)",
+"Seek knowledge from the cradle to the grave. - Prophet Muhammad (Hadith)",
+"Invite people to Islam even without words. - Prophet Muhammad (Hadith)",
+"Whoever shows mercy, even to a lizard, Allah will be merciful to him on the Day of Judgment. - Prophet Muhammad (Hadith)",
+"Whoever believes in Allah and the Last Day should say what is good or keep silent. - Prophet Muhammad (Hadith)",
+"The world is a prison for a believer and Paradise for a disbeliever. - Prophet Muhammad (Hadith)",
+"Allah is kind and loves kindness in all matters. - Prophet Muhammad (Hadith)",
+"When Allah loves a servant, He tests him. - Prophet Muhammad (Hadith)",
+"A person who seeks a path to acquire knowledge, Allah will make easy the path to Paradise for him. - Prophet Muhammad (Hadith)",
+"The reward of deeds depends upon the intentions. - Prophet Muhammad (Hadith)",
+        // Add more paragraphs as needed
+    ];
+
+    // Function to get a random Islamic quote
+    function getRandomIslamicQuote() {
+        return islamParagraphs[Math.floor(Math.random() * islamParagraphs.length)];
+    }
+
+    // Function to check if 24 hours have passed since last selection
+    function has24HoursPassed(lastSelectionTimestamp) {
+        const twentyFourHoursInMilliseconds = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+        const now = new Date().getTime();
+        return (now - lastSelectionTimestamp) >= twentyFourHoursInMilliseconds;
+    }
+
+    // Function to handle click on the "Islam" button
+    document.getElementById('Islam').addEventListener('click', function () {
+        // Check if there is a stored selection
+        const lastSelectionTimestamp = localStorage.getItem('lastSelectionTimestampIslam');
+        let selectedQuote;
+        if (lastSelectionTimestamp && !has24HoursPassed(parseInt(lastSelectionTimestamp))) {
+            // If 24 hours have not passed, use the previously selected quote
+            selectedQuote = localStorage.getItem('selectedQuoteIslam');
+        } else {
+            // If 24 hours have passed or no selection exists, get a new random quote
+            selectedQuote = getRandomIslamicQuote();
+            // Store the new selection and current timestamp
+            localStorage.setItem('selectedQuoteIslam', selectedQuote);
+            localStorage.setItem('lastSelectionTimestampIslam', new Date().getTime());
+        }
+
+        // Open the URL in a new tab
+        const url = 'https://www.example.com';
+        const backgroundImageUrl = 'https://images.pexels.com/photos/318451/pexels-photo-318451.jpeg?cs=srgb&dl=pexels-tayeb-mezahdia-318451.jpg&fm=jpg';
+        const newTab = window.open(url, '_blank');
+
+        // Write content to the new tab
+        if (newTab) {
+            newTab.document.write('<style> \
+                                    body { \
+                                        font-family: Arial, sans-serif; \
+                                        background-image: url(' + backgroundImageUrl + '); \
+                                        background-size: cover; \
+                                        background-position: center; \
+                                        padding: 20px; \
+                                        display: flex; \
+                                        align-items: center; \
+                                        justify-content: center; \
+                                        height: 100vh; \
+                                    } \
+                                    .content { \
+                                        text-align: left; \
+                                        width: 80%; \
+                                        max-width: 600px; \
+                                        padding: 20px; \
+                                        background-color: rgba(255, 255, 255, 0.8); \
+                                        border-radius: 8px; \
+                                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); \
+                                    } \
+                                    h1 { \
+                                        color: #2d7ea3; \
+                                        text-align: center; \
+                                    } \
+                                    p { \
+                                        color: #333; \
+                                        line-height: 1.6; \
+                                        text-align: center; \
+                                    } \
+                                  </style>');
+            newTab.document.write('<div class="content">');
+            newTab.document.write('<h1>Daily devotion for Islam</h1>');
+            newTab.document.write('<p>' + selectedQuote + '</p>');
+            newTab.document.write('</div>');
+        } else {
+            alert('Popup blocker is preventing opening the new tab. Please allow popups for this site.');
+        }
+    });
+</script>
+
+
+
+
+
+
+
+<script>
+    // Array of paragraphs
+    const paragraphs = [
+    "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight. - Proverbs 3:5-6",
+"The Lord is my shepherd, I lack nothing. - Psalm 23:1",
+"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16",
+"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. - Philippians 4:6",
+"Cast all your anxiety on him because he cares for you. - 1 Peter 5:7",
+"Be strong and courageous. Do not be afraid or terrified because of them, for the Lord your God goes with you; he will never leave you nor forsake you. - Deuteronomy 31:6",
+"But seek first his kingdom and his righteousness, and all these things will be given to you as well. - Matthew 6:33",
+"I can do all this through him who gives me strength. - Philippians 4:13",
+"The Lord is close to the brokenhearted and saves those who are crushed in spirit. - Psalm 34:18",
+"Come to me, all you who are weary and burdened, and I will give you rest. - Matthew 11:28",
+"Rejoice in the Lord always. I will say it again: Rejoice! - Philippians 4:4",
+"The Lord is my light and my salvation—whom shall I fear? The Lord is the stronghold of my life—of whom shall I be afraid? - Psalm 27:1",
+"Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth. - Psalm 46:10",
+"But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control. - Galatians 5:22-23",
+"And my God will meet all your needs according to the riches of his glory in Christ Jesus. - Philippians 4:19",
+"The peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus. - Philippians 4:7",
+"Commit to the Lord whatever you do, and he will establish your plans. - Proverbs 16:3",
+"But thanks be to God! He gives us the victory through our Lord Jesus Christ. - 1 Corinthians 15:57",
+"I have told you these things, so that in me you may have peace. In this world you will have trouble. But take heart! I have overcome the world.- John 16:33",
+"He gives strength to the weary and increases the power of the weak. - Isaiah 40:29",
+"For our light and momentary troubles are achieving for us an eternal glory that far outweighs them all. - 2 Corinthians 4:17",
+"Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here! - 2 Corinthians 5:17",
+"The righteous cry out, and the Lord hears them; he delivers them from all their troubles. - Psalm 34:17",
+"And we know that in all things God works for the good of those who love him, who have been called according to his purpose. - Romans 8:28",
+"May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit. - Romans 15:13",
+"Do not conform to the pattern of this world, but be transformed by the renewing of your mind. Then you will be able to test and approve what God’s will is—his good, pleasing and perfect will. - Romans 12:2",
+"The Lord himself goes before you and will be with you; he will never leave you nor forsake you. Do not be afraid; do not be discouraged. - Deuteronomy 31:8",
+"But you, Lord, are a compassionate and gracious God, slow to anger, abounding in love and faithfulness. - Psalm 86:15",
+"Be completely humble and gentle; be patient, bearing with one another in love. - Ephesians 4:2",
+"For I am convinced that neither death nor life, neither angels nor demons, neither the present nor the future, nor any powers, neither height nor depth, nor anything else in all creation, will be able to separate us from the love of God that is in Christ Jesus our Lord. - Romans 8:38-39",
+"The Lord is my rock, my fortress and my deliverer; my God is my rock, in whom I take refuge, my shield and the horn of my salvation, my stronghold. - Psalm 18:2",
+"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. - Philippians 4:6",
+"And we know that in all things God works for the good of those who love him, who have been called according to his purpose. - Romans 8:28",
+"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future. - Jeremiah 29:11",
+"But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control. - Galatians 5:22-23",
+"Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid. - John 14:27",
+"For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline. - 2 Timothy 1:7",
+"Therefore we do not lose heart. Though outwardly we are wasting away, yet inwardly we are being renewed day by day. For our light and momentary troubles are achieving for us an eternal glory that far outweighs them all. - 2 Corinthians 4:16-17",
+"But you, Lord, are a compassionate and gracious God, slow to anger, abounding in love and faithfulness. - Psalm 86:15",
+"I can do all this through him who gives me strength. - Philippians 4:13",
+"But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint. - Isaiah 40:31",
+"And we know that in all things God works for the good of those who love him, who have been called according to his purpose. - Romans 8:28",
+"But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control. Against such things there is no law. - Galatians 5:22-23",
+"Therefore, as God's chosen people, holy and dearly loved, clothe yourselves with compassion, kindness, humility, gentleness and patience. - Colossians 3:12",
+"But you, Lord, are a compassionate and gracious God, slow to anger, abounding in love and faithfulness. - Psalm 86:15",
+"And we know that in all things God works for the good of those who love him, who have been called according to his purpose. - Romans 8:28",
+"Rejoice always, pray continually, give thanks in all circumstances; for this is God's will for you in Christ Jesus. - 1 Thessalonians 5:16-18",
+"The Lord is my strength and my shield; my heart trusts in him, and he helps me. My heart leaps for joy, and with my song I praise him. - Psalm 28:7",
+"For our light and momentary troubles are achieving for us an eternal glory that far outweighs them all. - 2 Corinthians 4:17",
+"But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control. - Galatians 5:22-23",
+                                         
+
+    ];
+
+  // Function to get a random paragraph
+  function getRandomParagraph() {
+        return paragraphs[Math.floor(Math.random() * paragraphs.length)];
+    }
+
+    // Function to check if 24 hours have passed since last selection
+    function has24HoursPassed(lastSelectionTimestamp) {
+        const twentyFourHoursInMilliseconds = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+        const now = new Date().getTime();
+        return (now - lastSelectionTimestamp) >= twentyFourHoursInMilliseconds;
+    }
+
+    // Function to handle click on the "Christianity" button
+    document.getElementById('Christianity').addEventListener('click', function () {
+        // Check if there is a stored selection
+        const lastSelectionTimestamp = localStorage.getItem('lastSelectionTimestamp');
+        let selectedParagraph;
+        if (lastSelectionTimestamp && !has24HoursPassed(parseInt(lastSelectionTimestamp))) {
+            // If 24 hours have not passed, use the previously selected paragraph
+            selectedParagraph = localStorage.getItem('selectedParagraph');
+        } else {
+            // If 24 hours have passed or no selection exists, get a new random paragraph
+            selectedParagraph = getRandomParagraph();
+            // Store the new selection and current timestamp
+            localStorage.setItem('selectedParagraph', selectedParagraph);
+            localStorage.setItem('lastSelectionTimestamp', new Date().getTime());
+        }
+
+        // Open the URL in a new tab
+        const url = 'https://www.example.com';
+        const backgroundImageUrl = 'https://wallpapercave.com/wp/wp4444730.jpg';
+        const newTab = window.open(url, '_blank');
+
+        // Write content to the new tab
+        if (newTab) {
+            newTab.document.write('<style> \
+                                    body { \
+                                        font-family: Arial, sans-serif; \
+                                        background-image: url(' + backgroundImageUrl + '); \
+                                        background-size: cover; \
+                                        background-position: center; \
+                                        padding: 20px; \
+                                        display: flex; \
+                                        align-items: center; \
+                                        justify-content: center; \
+                                        height: 100vh; \
+                                    } \
+                                    .content { \
+                                        text-align: left; \
+                                        width: 80%; \
+                                        max-width: 600px; \
+                                        padding: 20px; \
+                                        background-color: rgba(255, 255, 255, 0.8); \
+                                        border-radius: 8px; \
+                                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); \
+                                    } \
+                                    h1 { \
+                                        color: #2d7ea3; \
+                                        text-align: center; \
+                                    } \
+                                    p { \
+                                        color: #333; \
+                                        line-height: 1.6; \
+                                        text-align: center; \
+                                    } \
+                                  </style>');
+            newTab.document.write('<div class="content">');
+            newTab.document.write('<h1>Daily devotion for Christianity</h1>');
+            newTab.document.write('<p>' + selectedParagraph + '</p>');
+            newTab.document.write('</div>');
+        } else {
+            alert('Popup blocker is preventing opening the new tab. Please allow popups for this site.');
+        }
+    });
+</script>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily devotion app</title>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://images.squarespace-cdn.com/content/v1/5f274f74909ca521cf4cecd2/0e1e76af-ecce-4a5e-99fe-015d6fbefaf5/religious+trauma.png');
+    background-size: cover;
+    background-position: center;
+}
+
+        
+        
+
+        h1 {
+            text-align: center;
+            font-size: 50px;
+            color: #d1d7da;
+        }
+
+        #religions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2d7ea3;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #devotion-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
